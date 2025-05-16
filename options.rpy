@@ -23,7 +23,7 @@ define gui.show_name = True
 
 ## Версия игры.
 
-define config.version = "1.0"
+define config.version = "1.1"
 
 
 ## Текст, помещённый в экран "Об игре". Поместите текст между тройными скобками.
@@ -37,12 +37,12 @@ define gui.about = _p("""
 ## постройке дистрибутивов. Оно должно содержать текст формата ASCII и не должно
 ## содержать пробелы, двоеточия и точки с запятой.
 
-define build.name = "VictorEbanat"
+define build.name = "Last order"
 
 
 ## Шрифт
-define gui.text_font = "fonts/PTSans-Regular.ttf"
-define gui.name_text_font = "fonts/PTSans-Regular.ttf"
+define gui.text_font = "fonts/PlayfairDisplay-Regular.ttf"
+define gui.name_text_font = "fonts/PlayfairDisplay-Regular.ttf"
 
 
 ## Звуки и музыка ##############################################################
@@ -68,6 +68,7 @@ define config.has_voice = True
 ## игры, если не будет остановлен, или не начнёт проигрываться другой аудиофайл.
 
 # define config.main_menu_music = "main-menu-theme.ogg"
+# define config.main_menu_transition = fade
 
 
 ## Переходы ####################################################################
@@ -78,8 +79,8 @@ define config.has_voice = True
 
 ## Вход и выход в игровое меню.
 
-define config.enter_transition = dissolve
-define config.exit_transition = dissolve
+define config.enter_transition = fade
+define config.exit_transition = fade
 
 
 ## Переход между экранами игрового меню.
@@ -126,7 +127,7 @@ define config.window_hide_transition = Dissolve(.2)
 ## в то время как любая другая цифра — это количество символов, печатаемых в
 ## секунду.
 
-default preferences.text_cps = 0
+default preferences.text_cps = 30
 
 
 ## Стандартная задержка авточтения. Большие значения означают долгие ожидания, а
@@ -214,3 +215,26 @@ init python:
 ## разделённые дробью.
 
 # define build.itch_project = "renpytom/test-project"
+
+# Глобально задаём PlayfairDisplay для всех основных стилей текста
+init:
+    style default:
+        font "fonts/PlayfairDisplay-Regular.ttf"
+    style text:
+        font "fonts/PlayfairDisplay-Regular.ttf"
+    style input:
+        font "fonts/PlayfairDisplay-Regular.ttf"
+    style button_text:
+        font "fonts/PlayfairDisplay-Regular.ttf"
+    style choice_button_text:
+        font "fonts/PlayfairDisplay-Regular.ttf"
+    style nvl_choice_button_text:
+        font "fonts/PlayfairDisplay-Regular.ttf"
+    style menu_choice_button_text:
+        font "fonts/PlayfairDisplay-Regular.ttf"
+    style window_title:
+        font "fonts/PlayfairDisplay-Regular.ttf"
+    style confirm_prompt_text:
+        font "fonts/PlayfairDisplay-Regular.ttf"
+    style confirm_prompt_title:
+        font "fonts/PlayfairDisplay-Regular.ttf"

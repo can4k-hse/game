@@ -10,4 +10,4 @@ def resize_image(input_path, output_path, size):
     img.save(output_path, optimize=True, quality=85)
 
 # Пример:
-resize_image("./images/photo/katusha.jpg", "./images/photo/katusha-resize.jpg", (1920, 1080))
+resize_image("./images/people/Soviet doctor.png", "./images/people/Soviet_doctor_resized.png", (1920, 1080))
