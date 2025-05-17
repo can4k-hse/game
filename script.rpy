@@ -17,27 +17,54 @@ transform Zoom_Transform:
     zoom 1.3
     yoffset 100
 
-# Люди
-image Soviet_Captain = At("images/Soviet_captain_resized.png", Soviet_Captain_Down)
-define captain = Character("Капитан Серебров", what_cps=30)
 
+
+# -----------------------------------------------------------------------------
+# Init Characters
+# -----------------------------------------------------------------------------
+
+
+# Капитан
+image Soviet_Captain = At("images/people/Soviet_Captain.png", Soviet_Captain_Down)
+define captain = Character("Капитан Серебров")
+
+# Младший сержант
 image Soviet_Private = At("images/people/Soviet_Private.png", Soviet_Private_Down)
-define Soviet_Private = Character("Младиший сержант Садиков", what_cps=30)
+define Soviet_Private = Character("Младший сержант Садиков")
 
+# Доктор
 image Soviet_Doctor = At("images/people/Soviet_Doctor.png", Soviet_Doctor_Down)
-define Soviet_Doctor = Character("Доктор Павлова", what_cps=30)
+define Soviet_Doctor = Character("Доктор Павлова")
 
-# Фон (без ведущего слэша в путях)
-image DugoutBg   = "images/Dugout_resized.png"
-image MedblockBg   = "images/bg/medblock.jpeg"
-image bg_main_menu = At("images/bg/screensaver.png", Zoom_Transform)
-image bg_before_mission = At("images/concepts/before_mission.png", Zoom_Transform)
 
-# Фотографии
+
+# -----------------------------------------------------------------------------
+# Init Backgrounds
+# -----------------------------------------------------------------------------
+
+
+image DugoutBg   = "images/bg/Dugout.png"
+image MedblockBg   = "images/bg/Medblock.jpeg"
+
+
+# -----------------------------------------------------------------------------
+# Init Real photoes
+# -----------------------------------------------------------------------------
+
 image Stalingrad = "images/photo/stalingrad.jpg"
 image Moscow     = "images/photo/moscow.jpg"
 image Gitler     = "images/photo/gitler.png"
 image Kavkaz     = "images/photo/kavkaz.jpg"
+
+
+# -----------------------------------------------------------------------------
+# Init sketches
+# -----------------------------------------------------------------------------
+
+
+image MainMenuSketch = At("images/sketches/Screensaver.png", Zoom_Transform)
+image BeforeAssigmentSketch = At("images/sketches/Before_Assigment.png", Zoom_Transform)
+
 
 
 # -----------------------------------------------------------------------------
@@ -70,10 +97,21 @@ init:
         ypadding 20
 
 init:
-    style main_menu_button_text:
-        font "fonts/PlayfairDisplay-Regular.ttf"
-        size 32
-        color "#FFF"
+    style main_menu_button_new_text is default:
+        font "fonts/PlayfairDisplay-ExtraBold.ttf"
+        size 36
+        color "#ffde22"  # Желтоватый цвет только для текста кнопки "Новая история"
+        text_align 0.5
+        hover_color "#ffde22"
+        background None
+        underline False
+        hover_underline True
+
+init:
+    style main_menu_button_text is default:
+        font "fonts/PlayfairDisplay-ExtraBold.ttf"
+        size 36
+        color "#ffffff"
         text_align 0.5
         hover_color "#EEE"
         background None
@@ -91,8 +129,8 @@ init:
         padding (30, 30)
         xalign 0.8
         yalign 0.5
-        xmaximum 300
-        ymaximum 350
+        xmaximum 350
+        ymaximum 300
 
 # -----------------------------------------------------------------------------
 # ЭКРАН: Главное меню
@@ -100,17 +138,17 @@ init:
 screen main_menu():
     on "show" action Play("music", "audio/victory.mp3", fadein=3.0)
 
-    add "bg_main_menu" at truecenter
+    add "MainMenuSketch" at truecenter
     frame:
         style "main_menu_frame"
         at menu_shadow
-        background Solid("#d6ac37ce")
-        xalign 0.9
-        yalign 0.5
+        background Solid("#15151544")
+        xalign 0.94
+        yalign 0.9
         vbox:
-            spacing 10
+            spacing -18
             align (0.5, 0.5)
-            textbutton "Новая история" action Start() style "main_menu_button"
+            textbutton "Новая история" action Start() style "main_menu_button" text_style "main_menu_button_new_text"
             textbutton "Загрузить" action ShowMenu("load") style "main_menu_button"
             textbutton "Настройки" action ShowMenu("preferences") style "main_menu_button"
             textbutton "Выход" action Quit() style "main_menu_button"
@@ -223,9 +261,9 @@ label capitan_welcome:
     captain "Ты видел радиста?"  
 
     menu:
-        "Нет, не видел. (ЛОЖЬ)": 
+        "(ЛОЖЬ) Нет, не видел.": 
             captain "И больше не увидишь, бляха. Нет его больше. И рации нет. Мы без связи.."
-        "Да, видел... Точнее то, что от него осталось. (ПРАВДА)": 
+        "(ПРАВДА) Да, видел... Точнее то, что от него осталось.": 
             captain "И рацию тоже разнесло, етить его. Мы без связи.." 
 
     captain "Ладно, Коля. Задание для тебя есть."
@@ -263,9 +301,9 @@ label medblock:
     Soviet_Private "Ты зачем пришёл-то? Или просто решил по умирающим походить, настроение поднять?"
 
     menu:
-        "Товарищ Капитан зовет нас к себе. Какой-то разговор. (СПОКОЙНО)":
+        "(СПОКОЙНО) Товарищ Капитан зовет нас к себе. Какой-то разговор.":
             Soviet_Private "Разговор, говоришь... Ноги у меня ещё при мне, а вот уверенность где-то там, на поле боя осталась..."   
-        "Капитан зовет нас к себе. Мне кажется, что-то случилось. (С ВОЛНЕНИЕМ)":
+        "(С ВОЛНЕНИЕМ) Капитан зовет нас к себе. Мне кажется, что-то случилось.":
             Soviet_Private "Связи нет, вот что случилось. Любой бы на его месте запереживал."
 
     Soviet_Private "Ах, если капитан говорит — значит, надо идти. Даже если у тебя кишки наружу — перевяжут и пошлют дальше."  
@@ -273,9 +311,9 @@ label medblock:
 
     # Первое меню выбора
     menu:
-        "Понимаю тебя, но иного выхода нет.": 
+        "(СУХО) Понимаю тебя, но иного выхода нет.": 
             Soviet_Private "Ну и правильно. Мне ж не в госпитале валяться, а с вами, родимыми. Как там говорили? ‘Отдохнём в могиле’?"  
-        "Если хочешь, могу сказать капитану, что ты пока не в форме.": 
+        "(ЗАБОТЛИВО) Если хочешь, могу сказать капитану, что ты пока не в форме.": 
             Soviet_Private "Да не, Коль, не надо. Я же не девка хрупкая. Скажешь такое — капитан подумает, что я сдулся."  
             Soviet_Private "А со сдувшимися у него разовор кортокий. Проходили, знаем."  
 
@@ -286,9 +324,9 @@ label medblock:
 
     # Второе меню выбора
     menu:
-        "Пошли, нас ждут.": 
+        "(НЕТЕРПЕЛИВО) Пошли, нас ждут.": 
             Soviet_Private "Да, да."  
-        "Как ты получил ранение?": 
+        "(С ЛЮБОПЫТСТВОМ) Как ты получил ранение?": 
             Soviet_Private "Да я рядом с Петькой был, когда снарядом накрыло."
             Soviet_Private "Очнулся уже тут. По началу ног не чувствовал, но вроде пронесло. Похожу еще, подвигаюсь."
             Soviet_Private "Знаешь, когда земля на тебя давит и кровью пахнет — всё остальное меркнет."  
@@ -313,9 +351,13 @@ label medblock:
     Soviet_Doctor "…"
     scene black with fade
     window hide
-    jump next_to_capitan
+    jump assignment_from_captain
 
-label next_to_capitan:
-    show bg_before_mission with dissolve
+
+# -----------------------------------------------------------------------------
+# ЛЕЙБЛ: assignment_from_captain — Капитан дает задание (АВТОР ВИКТОР КЛЕЙМЕНОВ)
+# -----------------------------------------------------------------------------
+label assignment_from_captain:
+    show BeforeAssigmentSketch with dissolve
     pause 100
     return

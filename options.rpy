@@ -12,7 +12,7 @@
 ##
 ## Символы "_()", окружающие название, отмечают его как пригодное для перевода.
 
-define config.name = _("VictorEbanat")
+define config.name = _("LastOrder")
 
 
 ## Определяет, показывать ли заголовок, данный выше, на экране главного меню.
@@ -23,7 +23,7 @@ define gui.show_name = True
 
 ## Версия игры.
 
-define config.version = "1.1"
+define config.version = "1.1.1"
 
 
 ## Текст, помещённый в экран "Об игре". Поместите текст между тройными скобками.
@@ -37,7 +37,7 @@ define gui.about = _p("""
 ## постройке дистрибутивов. Оно должно содержать текст формата ASCII и не должно
 ## содержать пробелы, двоеточия и точки с запятой.
 
-define build.name = "Last order"
+define build.name = "LastOrder"
 
 
 ## Шрифт
@@ -150,7 +150,7 @@ default preferences.afm_time = 15
 ## Этот параметр обычно не должен изменяться, а если и изменился, должен быть
 ## текстовой строчкой, а не выражением.
 
-define config.save_directory = "VictorEbanat-1747149796"
+define config.save_directory = "LastOrder-1747149796"
 
 
 ## Иконка ######################################################################
@@ -216,6 +216,11 @@ init python:
 
 # define build.itch_project = "renpytom/test-project"
 
+define gui.glyph_font = "fonts/PlayfairDisplay-Regular.ttf"
+define gui.interface_text_font = "fonts/PlayfairDisplay-Regular.ttf"
+define gui.system_font = "fonts/PlayfairDisplay-Regular.ttf"
+define gui.choice_button_text_idle_color = '#fff'
+
 # Глобально задаём PlayfairDisplay для всех основных стилей текста
 init:
     style default:
@@ -226,7 +231,7 @@ init:
         font "fonts/PlayfairDisplay-Regular.ttf"
     style button_text:
         font "fonts/PlayfairDisplay-Regular.ttf"
-    style choice_button_text:
+    style choice_button_text:ы
         font "fonts/PlayfairDisplay-Regular.ttf"
     style nvl_choice_button_text:
         font "fonts/PlayfairDisplay-Regular.ttf"
@@ -237,4 +242,40 @@ init:
     style confirm_prompt_text:
         font "fonts/PlayfairDisplay-Regular.ttf"
     style confirm_prompt_title:
+        font "fonts/PlayfairDisplay-Regular.ttf"
+    style pref_label_text:
+        font "fonts/PlayfairDisplay-Regular.ttf"
+    style pref_value_text:
+        font "fonts/PlayfairDisplay-Regular.ttf"
+    style pref_slider_text:
+        font "fonts/PlayfairDisplay-Regular.ttf"
+    style pref_button_text:
+        font "fonts/PlayfairDisplay-Regular.ttf"
+    style pref_frame_text:
+        font "fonts/PlayfairDisplay-Regular.ttf"
+    style h1 is default:
+        font "fonts/PlayfairDisplay-Regular.ttf"
+    style h2 is default:
+        font "fonts/PlayfairDisplay-Regular.ttf"
+    style h3 is default:
+        font "fonts/PlayfairDisplay-Regular.ttf"
+    style about_text is default:
+        font "fonts/PlayfairDisplay-Regular.ttf"
+    style about_label is default:
+        font "fonts/PlayfairDisplay-Regular.ttf"
+    style about_value is default:
+        font "fonts/PlayfairDisplay-Regular.ttf"
+    style help_text is default:
+        font "fonts/PlayfairDisplay-Regular.ttf"
+    style help_label is default:
+        font "fonts/PlayfairDisplay-Regular.ttf"
+    style help_value is default:
+        font "fonts/PlayfairDisplay-Regular.ttf"
+    style help_title is default:
+        font "fonts/PlayfairDisplay-Regular.ttf"
+    style help_keyboard_label is default:
+        font "fonts/PlayfairDisplay-Regular.ttf"
+    style help_keyboard_value is default:
+        font "fonts/PlayfairDisplay-Regular.ttf"
+    style help_category_label is default:
         font "fonts/PlayfairDisplay-Regular.ttf"
