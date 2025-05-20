@@ -231,7 +231,7 @@ init:
         font "fonts/PlayfairDisplay-Regular.ttf"
     style button_text:
         font "fonts/PlayfairDisplay-Regular.ttf"
-    style choice_button_text:ы
+    style choice_button_text:
         font "fonts/PlayfairDisplay-Regular.ttf"
     style nvl_choice_button_text:
         font "fonts/PlayfairDisplay-Regular.ttf"
